@@ -18,7 +18,7 @@ public final class CommonDie implements Die<Integer> {
 
   @Override
   public void roll() {
-    value = values.get((int) Math.random() % values.size());
+    value = values.get((int) (Math.random() * values.size()));
   }
 
   @Override
