@@ -49,7 +49,7 @@ abstract public class AbstractDie<T> implements Die<T> {
 
   @Override
   public String toString() {
-    return getClass().getName() + getDialect() + ": " + value;
+    return getClass().getSimpleName() + getDialect() + ": " + value;
   }
 
 }
