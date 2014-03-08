@@ -16,7 +16,7 @@ abstract public class AbstractDie<T> implements Die<T> {
 
   @Override
   public void roll() {
-    value = getDialect().get((int) Math.random() % getDialect().size());
+    value = getDialect().get((int) (Math.random() * getDialect().size()));
   }
 
   @Override
