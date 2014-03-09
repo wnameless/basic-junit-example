@@ -20,7 +20,14 @@ public class AbstractDieTest {
 
   @Before
   public void setUp() {
-    die = new CommonDie();
+    die = new AbstractDie<Integer>() {
+
+      @Override
+      protected List<Integer> getDialect() {
+        return Arrays.asList(1, 2, 3, 4, 5, 6);
+      }
+
+    };
   }
 
   @Test
