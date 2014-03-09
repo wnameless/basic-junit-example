@@ -35,23 +35,24 @@ public class CommonDieTest {
   }
 
   @Test
-  public void nullInitialValueIsNotAcceptable1() {
+  public void invalidInitialValueIsNotAcceptable1() {
     try {
-      new CommonDie(null);
+      new CommonDie(0);
       fail();
-    } catch (NullPointerException e) {}
+    } catch (IllegalArgumentException e) {}
   }
 
-  @Test(expected = NullPointerException.class)
-  public void nullInitialValueIsNotAcceptable2() {
-    new CommonDie(null);
+  @Test(expected = IllegalArgumentException.class)
+  public void invalidInitialValueIsNotAcceptable2() {
+    new CommonDie(7);
   }
 
   @Test
-  public void nullInitialValueIsNotAcceptable3() {
-    expectedEx.expect(NullPointerException.class);
-    expectedEx.expectMessage("Initial value can't be null.");
-    new CommonDie(null);
+  public void invalidInitialValueIsNotAcceptable3() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx
+        .expectMessage("Invalid initial value(-1). Initial value must be within [1, 2, 3, 4, 5, 6].");
+    new CommonDie(-1);
   }
 
 }

@@ -12,9 +12,10 @@ public final class CommonDie extends AbstractDie<Integer> implements
 
   public CommonDie() {}
 
-  public CommonDie(Integer init) {
-    if (init == null)
-      throw new NullPointerException("Initial value can't be null.");
+  public CommonDie(int init) {
+    if (init < 1 || init > 6)
+      throw new IllegalArgumentException("Invalid initial value(" + init
+          + "). Initial value must be within " + values + ".");
 
     value = init;
   }
