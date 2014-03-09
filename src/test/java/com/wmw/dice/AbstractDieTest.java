@@ -20,7 +20,11 @@ public class AbstractDieTest {
 
   @Before
   public void setUp() {
-    die = new AbstractDie<Integer>() {
+    die = newAbstractDie();
+  }
+
+  private Die<Integer> newAbstractDie() {
+    return new AbstractDie<Integer>() {
 
       @Override
       protected List<Integer> getDialect() {
@@ -39,7 +43,7 @@ public class AbstractDieTest {
   public void everyNewDieGetsDifferentInitialValue() {
     Set<Integer> values = new HashSet<Integer>();
     for (int i = 0; i < 1000; i++) {
-      die = new CommonDie();
+      die = newAbstractDie();
       values.add(die.getValue());
     }
     assertEquals(new HashSet<Integer>(range), values);
@@ -74,9 +78,9 @@ public class AbstractDieTest {
 
   @Test
   public void ensureTheSymmetryOfEquals() {
-    CommonDie otherDie;
+    Die<Integer> otherDie;
     do {
-      otherDie = new CommonDie();
+      otherDie = newAbstractDie();
     } while (!otherDie.getValue().equals(die.getValue()));
     assertTrue(die.equals(otherDie));
     assertTrue(otherDie.equals(die));
@@ -84,13 +88,13 @@ public class AbstractDieTest {
 
   @Test
   public void ensureTheTransitivityOfEquals() {
-    CommonDie die1;
+    Die<Integer> die1;
     do {
-      die1 = new CommonDie();
+      die1 = newAbstractDie();
     } while (!die1.getValue().equals(die.getValue()));
-    CommonDie die2;
+    Die<Integer> die2;
     do {
-      die2 = new CommonDie();
+      die2 = newAbstractDie();
     } while (!die2.getValue().equals(die.getValue()));
     assertTrue(die.equals(die1));
     assertTrue(die1.equals(die2));
@@ -99,9 +103,9 @@ public class AbstractDieTest {
 
   @Test
   public void diceWithDifferentValuesAreNotEqual() {
-    CommonDie otherDie;
+    Die<Integer> otherDie;
     do {
-      otherDie = new CommonDie();
+      otherDie = newAbstractDie();
     } while (otherDie.getValue().equals(die.getValue()));
     assertFalse(die.equals(otherDie));
   }
@@ -118,18 +122,18 @@ public class AbstractDieTest {
 
   @Test
   public void diceWithTheSameValueHaveTheSameHashCode() {
-    CommonDie otherDie;
+    Die<Integer> otherDie;
     do {
-      otherDie = new CommonDie();
+      otherDie = newAbstractDie();
     } while (!otherDie.getValue().equals(die.getValue()));
     assertEquals(die.hashCode(), otherDie.hashCode());
   }
 
   @Test
   public void diceWithDifferentValuesHaveDifferentHashCodes() {
-    CommonDie otherDie;
+    Die<Integer> otherDie;
     do {
-      otherDie = new CommonDie();
+      otherDie = newAbstractDie();
     } while (otherDie.getValue().equals(die.getValue()));
     assertNotEquals(die.hashCode(), otherDie.hashCode());
   }
