@@ -6,7 +6,7 @@ import java.util.List;
 
 abstract public class AbstractDie<T> implements Die<T> {
 
-  private T value;
+  protected T value;
 
   public AbstractDie() {
     roll();
