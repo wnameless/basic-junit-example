@@ -29,15 +29,14 @@ import static java.awt.Color.RED;
 import static java.awt.Color.YELLOW;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public final class SevenColoredDie extends AbstractDie<Color> implements
     Die<Color> {
 
-  private static final List<Color> colors = new ArrayList<Color>(Arrays.asList(
-      RED, ORANGE, YELLOW, GREEN, BLUE, CYAN, MAGENTA));
+  private static final List<Color> colors = Arrays.asList(RED, ORANGE, YELLOW,
+      GREEN, BLUE, CYAN, MAGENTA);
 
   @Override
   protected List<Color> getDialect() {
