@@ -80,6 +80,11 @@ public class CommonDieTest {
     assertEquals(range, die.getAllValues());
   }
 
+  @Test(expected = UnsupportedOperationException.class)
+  public void listFromGetAllValuesIsUnmodifiable() {
+    die.getAllValues().add(0);
+  }
+
   @Test
   public void ensureTheReflexivityOfEquals() {
     assertTrue(die.equals(die));
