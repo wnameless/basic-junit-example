@@ -50,7 +50,7 @@ abstract public class AbstractDie<T> implements Die<T> {
   }
 
   @Override
-  public boolean equals(Object o) {
+  public final boolean equals(Object o) {
     if (o instanceof Die) {
       Die<?> die = (Die<?>) o;
       return value.equals(die.getValue())
@@ -60,7 +60,7 @@ abstract public class AbstractDie<T> implements Die<T> {
   }
 
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     int result = 6;
     result = result ^ 31 + getDialect().hashCode();
     result = result ^ 31 + value.hashCode();
