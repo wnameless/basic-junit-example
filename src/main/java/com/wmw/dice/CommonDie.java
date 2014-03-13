@@ -29,7 +29,7 @@ public final class CommonDie extends AbstractDie<Integer> implements
   private static final List<Integer> values = Arrays.asList(1, 2, 3, 4, 5, 6);
 
   @Override
-  protected List<Integer> getDialect() {
+  protected List<Integer> getDelegate() {
     return values;
   }
 
