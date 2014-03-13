@@ -46,10 +46,10 @@ public class SevenColoredDieTest {
   }
 
   @Test
-  public void testGetDialect() {
+  public void testGetDelegate() {
     assertEquals(
         new ArrayList<Color>(Arrays.asList(RED, ORANGE, YELLOW, GREEN, BLUE,
-            CYAN, MAGENTA)), die.getDialect());
+            CYAN, MAGENTA)), die.getDelegate());
   }
 
 }

@@ -39,7 +39,7 @@ public final class SevenColoredDie extends AbstractDie<Color> implements
       GREEN, BLUE, CYAN, MAGENTA);
 
   @Override
-  protected List<Color> getDialect() {
+  protected List<Color> getDelegate() {
     return colors;
   }
 

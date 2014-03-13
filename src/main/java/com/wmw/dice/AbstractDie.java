@@ -32,11 +32,11 @@ abstract public class AbstractDie<T> implements Die<T> {
     roll();
   }
 
-  abstract protected List<T> getDialect();
+  abstract protected List<T> getDelegate();
 
   @Override
   public void roll() {
-    value = getDialect().get((int) (Math.random() * getDialect().size()));
+    value = getDelegate().get((int) (Math.random() * getDelegate().size()));
   }
 
   @Override
@@ -46,7 +46,7 @@ abstract public class AbstractDie<T> implements Die<T> {
 
   @Override
   public List<T> getAllValues() {
-    return unmodifiableList(getDialect());
+    return unmodifiableList(getDelegate());
   }
 
   @Override
@@ -54,7 +54,7 @@ abstract public class AbstractDie<T> implements Die<T> {
     if (o instanceof Die) {
       Die<?> die = (Die<?>) o;
       return value.equals(die.getValue())
-          && getDialect().equals(die.getAllValues());
+          && getDelegate().equals(die.getAllValues());
     }
     return false;
   }
@@ -62,14 +62,14 @@ abstract public class AbstractDie<T> implements Die<T> {
   @Override
   public final int hashCode() {
     int result = 6;
-    result = result ^ 31 + getDialect().hashCode();
+    result = result ^ 31 + getDelegate().hashCode();
     result = result ^ 31 + value.hashCode();
     return result;
   }
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + getDialect() + ": " + value;
+    return getClass().getSimpleName() + getDelegate() + ": " + value;
   }
 
 }

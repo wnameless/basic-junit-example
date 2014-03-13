@@ -47,7 +47,7 @@ public class AbstractDieTest {
     return new AbstractDie<Integer>() {
 
       @Override
-      protected List<Integer> getDialect() {
+      protected List<Integer> getDelegate() {
         return Arrays.asList(1, 2, 3, 4, 5, 6);
       }
 

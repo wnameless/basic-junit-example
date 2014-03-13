@@ -39,7 +39,7 @@ public final class CommonDie extends AbstractDie<Integer> implements
   }
 
   @Override
-  protected List<Integer> getDialect() {
+  protected List<Integer> getDelegate() {
     return values;
   }
 
