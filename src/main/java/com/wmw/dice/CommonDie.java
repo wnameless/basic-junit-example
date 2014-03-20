@@ -20,20 +20,23 @@
  */
 package com.wmw.dice;
 
-import java.util.Arrays;
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.List;
+
+import com.google.common.collect.ImmutableList;
 
 public final class CommonDie extends AbstractDie<Integer> implements
     Die<Integer> {
 
-  private static final List<Integer> values = Arrays.asList(1, 2, 3, 4, 5, 6);
+  private static final List<Integer> values = ImmutableList
+      .of(1, 2, 3, 4, 5, 6);
 
   public CommonDie() {}
 
   public CommonDie(int init) {
-    if (init < 1 || init > 6)
-      throw new IllegalArgumentException("Invalid initial value(" + init
-          + "). Initial value must be within " + values + ".");
+    checkArgument(init >= 1 && init <= 6, "Invalid initial value(" + init
+        + "). Initial value must be within " + values + ".");
 
     value = init;
   }

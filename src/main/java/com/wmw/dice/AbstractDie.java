@@ -24,6 +24,8 @@ import static java.util.Collections.unmodifiableList;
 
 import java.util.List;
 
+import com.google.common.base.Objects;
+
 abstract public class AbstractDie<T> implements Die<T> {
 
   protected T value;
@@ -53,23 +55,21 @@ abstract public class AbstractDie<T> implements Die<T> {
   public final boolean equals(Object o) {
     if (o instanceof Die) {
       Die<?> die = (Die<?>) o;
-      return value.equals(die.getValue())
-          && getDelegate().equals(die.getAllValues());
+      return Objects.equal(value, die.getValue())
+          && Objects.equal(getDelegate(), die.getAllValues());
     }
     return false;
   }
 
   @Override
   public final int hashCode() {
-    int result = 6;
-    result = result ^ 31 + getDelegate().hashCode();
-    result = result ^ 31 + value.hashCode();
-    return result;
+    return Objects.hashCode(getDelegate(), value);
   }
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + getDelegate() + ": " + value;
+    return Objects.toStringHelper(getClass()).addValue(getDelegate())
+        .addValue(value).toString();
   }
 
 }

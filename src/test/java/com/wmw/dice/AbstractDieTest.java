@@ -22,7 +22,6 @@ package com.wmw.dice;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -32,6 +31,8 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.common.testing.EqualsTester;
 
 public class AbstractDieTest {
 
@@ -97,33 +98,12 @@ public class AbstractDieTest {
   }
 
   @Test
-  public void ensureTheReflexivityOfEquals() {
-    assertTrue(die.equals(die));
-  }
-
-  @Test
-  public void ensureTheSymmetryOfEquals() {
+  public void testEquality() {
     Die<Integer> otherDie;
     do {
       otherDie = newAbstractDie();
     } while (!otherDie.getValue().equals(die.getValue()));
-    assertTrue(die.equals(otherDie));
-    assertTrue(otherDie.equals(die));
-  }
-
-  @Test
-  public void ensureTheTransitivityOfEquals() {
-    Die<Integer> die1;
-    do {
-      die1 = newAbstractDie();
-    } while (!die1.getValue().equals(die.getValue()));
-    Die<Integer> die2;
-    do {
-      die2 = newAbstractDie();
-    } while (!die2.getValue().equals(die.getValue()));
-    assertTrue(die.equals(die1));
-    assertTrue(die1.equals(die2));
-    assertTrue(die2.equals(die));
+    new EqualsTester().addEqualityGroup(die, otherDie).testEquals();
   }
 
   @Test
@@ -136,37 +116,9 @@ public class AbstractDieTest {
   }
 
   @Test
-  public void dieAndOtherObjectAreNotEqual() {
-    assertFalse(die.equals(1));
-  }
-
-  @Test
-  public void dieAndNullObjectAreNotEqual() {
-    assertFalse(die.equals(null));
-  }
-
-  @Test
-  public void diceWithTheSameValueHaveTheSameHashCode() {
-    Die<Integer> otherDie;
-    do {
-      otherDie = newAbstractDie();
-    } while (!otherDie.getValue().equals(die.getValue()));
-    assertEquals(die.hashCode(), otherDie.hashCode());
-  }
-
-  @Test
-  public void diceWithDifferentValuesHaveDifferentHashCodes() {
-    Die<Integer> otherDie;
-    do {
-      otherDie = newAbstractDie();
-    } while (otherDie.getValue().equals(die.getValue()));
-    assertNotEquals(die.hashCode(), otherDie.hashCode());
-  }
-
-  @Test
   public void testToString() {
-    assertEquals(die.getClass().getSimpleName() + die.getAllValues() + ": "
-        + die.getValue(), die.toString());
+    assertEquals(die.getClass().getSimpleName() + "{" + die.getAllValues()
+        + ", " + die.getValue() + "}", die.toString());
   }
 
 }
