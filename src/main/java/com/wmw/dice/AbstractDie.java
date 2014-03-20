@@ -36,7 +36,7 @@ abstract public class AbstractDie<T> implements Die<T> {
 
   @Override
   public void roll() {
-    value = getDelegate().get((int) (Math.random() * getDelegate().size()));
+    value = getAllValues().get((int) (Math.random() * getAllValues().size()));
   }
 
   @Override
@@ -53,8 +53,8 @@ abstract public class AbstractDie<T> implements Die<T> {
   public final boolean equals(Object o) {
     if (o instanceof Die) {
       Die<?> die = (Die<?>) o;
-      return value.equals(die.getValue())
-          && getDelegate().equals(die.getAllValues());
+      return getValue().equals(die.getValue())
+          && getAllValues().equals(die.getAllValues());
     }
     return false;
   }
@@ -62,14 +62,14 @@ abstract public class AbstractDie<T> implements Die<T> {
   @Override
   public final int hashCode() {
     int result = 6;
-    result = result ^ 31 + getDelegate().hashCode();
-    result = result ^ 31 + value.hashCode();
+    result = result ^ 31 + getAllValues().hashCode();
+    result = result ^ 31 + getValue().hashCode();
     return result;
   }
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + getDelegate() + ": " + value;
+    return getClass().getSimpleName() + getAllValues() + ": " + getValue();
   }
 
 }
