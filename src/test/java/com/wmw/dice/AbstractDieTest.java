@@ -22,6 +22,7 @@ package com.wmw.dice;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -113,6 +114,7 @@ public class AbstractDieTest {
       otherDie = newAbstractDie();
     } while (otherDie.getValue().equals(die.getValue()));
     assertFalse(die.equals(otherDie));
+    assertNotEquals(die.hashCode(), otherDie.hashCode());
   }
 
   @Test
