@@ -26,8 +26,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-public final class CommonDie extends AbstractDie<Integer> implements
-    Die<Integer> {
+public final class CommonDie extends AbstractDie<Integer> {
 
   private static final List<Integer> values = ImmutableList
       .of(1, 2, 3, 4, 5, 6);

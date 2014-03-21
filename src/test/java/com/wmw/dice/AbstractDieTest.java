@@ -20,13 +20,13 @@
  */
 package com.wmw.dice;
 
+import static com.google.common.collect.Sets.newHashSet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -50,7 +50,7 @@ public class AbstractDieTest {
 
       @Override
       protected List<Integer> getDelegate() {
-        return Arrays.asList(1, 2, 3, 4, 5, 6);
+        return range;
       }
 
     };
@@ -63,22 +63,22 @@ public class AbstractDieTest {
 
   @Test
   public void everyNewDieGetsDifferentInitialValue() {
-    Set<Integer> values = new HashSet<Integer>();
+    Set<Integer> values = newHashSet();
     for (int i = 0; i < 1000; i++) {
       die = newAbstractDie();
       values.add(die.getValue());
     }
-    assertEquals(new HashSet<Integer>(range), values);
+    assertEquals(newHashSet(range), values);
   }
 
   @Test
   public void rollToChangeTheValue() {
-    Set<Integer> values = new HashSet<Integer>();
+    Set<Integer> values = newHashSet();
     for (int i = 0; i < 1000; i++) {
       die.roll();
       values.add(die.getValue());
     }
-    assertEquals(new HashSet<Integer>(range), values);
+    assertEquals(newHashSet(range), values);
   }
 
   @Test
