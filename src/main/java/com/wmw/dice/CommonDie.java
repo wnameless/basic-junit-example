@@ -29,7 +29,9 @@ public final class CommonDie extends AbstractDie<Integer> {
 
   public CommonDie() {}
 
-  public CommonDie(int init) {
+  public CommonDie(Integer init) {
+    if (init == null)
+      throw new NullPointerException();
     if (init < 1 || init > 6)
       throw new IllegalArgumentException("Invalid initial value(" + init
           + "). Initial value must be within " + values + ".");

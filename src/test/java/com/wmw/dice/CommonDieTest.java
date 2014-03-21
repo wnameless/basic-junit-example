@@ -52,6 +52,11 @@ public class CommonDieTest {
     assertEquals(Integer.valueOf(1), new CommonDie(1).getValue());
   }
 
+  @Test(expected = NullPointerException.class)
+  public void nullInitialValueIsNotAcceptable() {
+    new CommonDie(null);
+  }
+
   @Test
   public void invalidInitialValueIsNotAcceptable1() {
     try {
