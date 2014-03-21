@@ -32,8 +32,7 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 
-public final class SevenColoredDie extends AbstractDie<Color> implements
-    Die<Color> {
+public final class SevenColoredDie extends AbstractDie<Color> {
 
   private static final List<Color> colors = Arrays.asList(RED, ORANGE, YELLOW,
       GREEN, BLUE, CYAN, MAGENTA);

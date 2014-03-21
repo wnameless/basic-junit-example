@@ -29,8 +29,6 @@ import static java.awt.Color.RED;
 import static java.awt.Color.YELLOW;
 import static org.junit.Assert.assertEquals;
 
-import java.awt.Color;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -48,8 +46,8 @@ public class SevenColoredDieTest {
   @Test
   public void testGetDelegate() {
     assertEquals(
-        new ArrayList<Color>(Arrays.asList(RED, ORANGE, YELLOW, GREEN, BLUE,
-            CYAN, MAGENTA)), die.getDelegate());
+        Arrays.asList(RED, ORANGE, YELLOW, GREEN, BLUE, CYAN, MAGENTA),
+        die.getDelegate());
   }
 
 }

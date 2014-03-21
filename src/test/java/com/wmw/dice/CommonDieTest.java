@@ -22,7 +22,6 @@ package com.wmw.dice;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -39,8 +38,7 @@ public class CommonDieTest {
 
   @Test
   public void testGetDelegate() {
-    assertEquals(new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)),
-        die.getDelegate());
+    assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6), die.getDelegate());
   }
 
 }

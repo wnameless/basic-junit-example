@@ -23,8 +23,7 @@ package com.wmw.dice;
 import java.util.Arrays;
 import java.util.List;
 
-public final class CommonDie extends AbstractDie<Integer> implements
-    Die<Integer> {
+public final class CommonDie extends AbstractDie<Integer> {
 
   private static final List<Integer> values = Arrays.asList(1, 2, 3, 4, 5, 6);
 
