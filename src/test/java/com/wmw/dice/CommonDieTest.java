@@ -21,7 +21,6 @@
 package com.wmw.dice;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
@@ -29,6 +28,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import com.google.common.testing.NullPointerTester;
 
 public class CommonDieTest {
 
@@ -53,24 +54,16 @@ public class CommonDieTest {
   }
 
   @Test
-  public void invalidInitialValueIsNotAcceptable1() {
-    try {
-      new CommonDie(0);
-      fail();
-    } catch (IllegalArgumentException e) {}
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void invalidInitialValueIsNotAcceptable2() {
-    new CommonDie(7);
+  public void nullInitialValueIsNotAcceptable() {
+    new NullPointerTester().testAllPublicConstructors(CommonDie.class);
   }
 
   @Test
-  public void invalidInitialValueIsNotAcceptable3() {
+  public void invalidInitialValueIsNotAcceptable() {
     expectedEx.expect(IllegalArgumentException.class);
     expectedEx
-        .expectMessage("Invalid initial value(-1). Initial value must be within [1, 2, 3, 4, 5, 6].");
-    new CommonDie(-1);
+        .expectMessage("Invalid initial value(7). Initial value must be within [1, 2, 3, 4, 5, 6].");
+    new CommonDie(7);
   }
 
 }

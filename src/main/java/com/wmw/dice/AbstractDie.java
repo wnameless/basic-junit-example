@@ -57,6 +57,7 @@ abstract public class AbstractDie<T> implements Die<T> {
       Die<?> die = (Die<?>) o;
       return Objects.equal(getValue(), die.getValue())
           && Objects.equal(getAllValues(), die.getAllValues());
+
     }
     return false;
   }

@@ -21,6 +21,7 @@
 package com.wmw.dice;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 
@@ -33,8 +34,9 @@ public final class CommonDie extends AbstractDie<Integer> {
 
   public CommonDie() {}
 
-  public CommonDie(int init) {
-    checkArgument(init >= 1 && init <= 6, "Invalid initial value(" + init
+  public CommonDie(Integer init) {
+    checkNotNull(init);
+    checkArgument(values.contains(init), "Invalid initial value(" + init
         + "). Initial value must be within " + values + ".");
 
     value = init;
